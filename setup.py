@@ -18,7 +18,7 @@ setup(
     keywords='',
     package_dir={'': 'src'},
     packages=find_packages(where='src'),
-    python_requires='>=3.6, <4',
+    python_requires='>=3.7, <4',
     install_requires=[],
     extras_require={
         'dev': ['pycodestyle', 'isort'],
