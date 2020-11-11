@@ -4,7 +4,7 @@ Test config.py
 """
 
 from unittest import TestCase
-from daylio_parser.config import MoodConfig
+from daylio_parser.config import MoodConfig, Mood
 
 
 class TestConfig(TestCase):
@@ -51,3 +51,10 @@ class TestConfig(TestCase):
         self.assertEqual(m.moods[2].name, 'good')
         self.assertEqual(m.moods[2].level, 3)
         self.assertEqual(m.moods[2].boundaries, (2.5, 3.01))
+
+    def test_get_mood(self):
+        m = MoodConfig()
+
+        expected = Mood('good', 4, '#4CA369', (3.5, 4.5))
+
+        self.assertEqual(m.get('good'), expected)

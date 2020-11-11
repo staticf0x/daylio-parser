@@ -29,6 +29,9 @@ class MoodConfig:
     """
 
     def __init__(self, mood_list=None):
+        self.moods = []
+        self.__map = {}
+
         if mood_list:
             self.__load_moods(mood_list)
         else:
@@ -37,8 +40,12 @@ class MoodConfig:
     def from_list(self, mood_list):
         self.__load_moods(mood_list)
 
+    def get(self, mood_name):
+        return self.__map[mood_name]
+
     def __load_moods(self, mood_list):
         self.moods = []
+        self.__map = {}
 
         for level, (name, color) in enumerate(mood_list):
             if level == 0:
@@ -56,4 +63,6 @@ class MoodConfig:
             boundaries = (b_lower, b_upper)
 
             mood = Mood(name, level + 1, color, boundaries)
+
             self.moods.append(mood)
+            self.__map[name] = mood
