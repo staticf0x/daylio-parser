@@ -30,3 +30,12 @@ class TestParser(TestCase):
         ]
 
         self.assertEqual(avg_moods, expected)
+
+    def test_activity_moods(self):
+        moods = activity_moods(self.entries)
+
+        self.assertAlmostEqual(moods['work'][0], 4.0, 0)
+        self.assertAlmostEqual(moods['work'][1], 0.89, 2)
+
+        self.assertAlmostEqual(moods['programming'][0], 5.0, 0)
+        self.assertAlmostEqual(moods['programming'][1], 0, 0)

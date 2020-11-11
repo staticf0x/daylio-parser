@@ -30,3 +30,19 @@ def average_moods(entries: List[Entry]):
         result.append((date, np.mean(moods)))
 
     return result
+
+
+def activity_moods(entries: List[Entry]):
+    activity_to_mood = {}
+
+    for entry in entries:
+        for activity in entry.activities:
+            activity_to_mood.setdefault(activity, [])
+            activity_to_mood[activity].append(entry.mood.level)
+
+    activities_avg = {}
+
+    for activity, moods in activity_to_mood.items():
+        activities_avg[activity] = (np.mean(moods), np.std(moods))
+
+    return activities_avg
