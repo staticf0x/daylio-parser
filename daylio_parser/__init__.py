@@ -1,2 +1,2 @@
-from .config import MoodConfig, Mood
-from .parser import Parser, Entry
+from .config import Mood, MoodConfig
+from .parser import Entry, Parser

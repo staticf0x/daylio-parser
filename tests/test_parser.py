@@ -3,11 +3,11 @@
 Test config.py
 """
 
-from unittest import TestCase
-import pathlib
 import datetime
+import pathlib
+from unittest import TestCase
 
-from daylio_parser.parser import Parser, Entry
+from daylio_parser.parser import Entry, Parser
 
 
 class TestParser(TestCase):

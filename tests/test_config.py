@@ -4,7 +4,8 @@ Test config.py
 """
 
 from unittest import TestCase
-from daylio_parser.config import MoodConfig, Mood
+
+from daylio_parser.config import Mood, MoodConfig
 
 
 class TestConfig(TestCase):

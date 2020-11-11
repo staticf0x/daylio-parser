@@ -8,7 +8,7 @@ import datetime
 from dataclasses import dataclass
 from typing import List
 
-from .config import MoodConfig, Mood
+from .config import Mood, MoodConfig
 
 
 @dataclass
