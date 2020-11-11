@@ -30,6 +30,6 @@ jobs:
     - name: Run Tests
       run: |
         green
-    -name: Check PEP8
+    - name: Check PEP8
       run: |
         pycodestyle daylio_parser/
