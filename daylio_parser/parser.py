@@ -24,6 +24,10 @@ class Entry:
 
 
 class Parser:
+    """
+    Parser for the CSV file
+    """
+
     def __init__(self, config=None):
         if not config:
             self.config = MoodConfig()

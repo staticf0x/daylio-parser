@@ -4,14 +4,19 @@ Mood statistics
 """
 
 import datetime
-from typing import List
+from typing import Dict, List, Tuple
 
 import numpy as np
 
 from .parser import Entry
 
 
-def average_moods(entries: List[Entry]):
+def average_moods(entries: List[Entry]) -> List[Tuple[datetime.date, float]]:
+    """
+    Computes average moods for each day. Returns a list
+    of tuples: [(datetime.date, average mood that day), ...]
+    """
+
     group_by_date = {}
 
     for entry in entries:
@@ -32,7 +37,12 @@ def average_moods(entries: List[Entry]):
     return result
 
 
-def activity_moods(entries: List[Entry]):
+def activity_moods(entries: List[Entry]) -> Dict[str, Tuple[float, float]]:
+    """
+    Computes average moods for each activity in entries.
+    Returns a dict: {activity name: (average mood, standard deviation)}
+    """
+
     activity_to_mood = {}
 
     for entry in entries:

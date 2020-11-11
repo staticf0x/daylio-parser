@@ -8,7 +8,7 @@ import pathlib
 from unittest import TestCase
 
 from daylio_parser.parser import Entry, Parser
-from daylio_parser.stats import average_moods, activity_moods
+from daylio_parser.stats import activity_moods, average_moods
 
 
 class TestParser(TestCase):
