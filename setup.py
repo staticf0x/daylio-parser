@@ -17,8 +17,7 @@ setup(
     classifiers=[
     ],
     keywords='',
-    package_dir={'': 'src'},
-    packages=find_packages(where='src'),
+    packages=find_packages(),
     python_requires='>=3.7, <4',
     install_requires=['numpy'],
     extras_require={
