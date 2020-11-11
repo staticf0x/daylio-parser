@@ -26,6 +26,8 @@ class Mood:
 class MoodConfig:
     """
     Configure mood levels and their properties
+
+    TODO: Add color generator when there's too many moods
     """
 
     def __init__(self, mood_list=None):
