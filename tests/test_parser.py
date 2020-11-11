@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Test config.py
+Test parser.py
 """
 
 import datetime

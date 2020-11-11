@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Test config.py
+Test stats.py
 """
 
 import datetime
@@ -8,7 +8,7 @@ import pathlib
 from unittest import TestCase
 
 from daylio_parser.parser import Entry, Parser
-from daylio_parser.stats import average_moods
+from daylio_parser.stats import average_moods, activity_moods
 
 
 class TestParser(TestCase):
