@@ -34,7 +34,7 @@ class MoodConfig:
     TODO: Add color generator when there's too many moods
     """
 
-    def __init__(self, mood_list: List[Tuple[str, str]]=None):
+    def __init__(self, mood_list: List[Tuple[str, str]] = None):
         """
         Create the config with a list of moods: [(name, color), ...].
         If no moods are provided, then the config is created
