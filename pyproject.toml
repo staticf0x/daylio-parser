@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "daylio-parser"
+version = "0.1.0"
+description = "A Python module to parse Daylio exports"
+authors = ["Meesha <44530786+meesha7@users.noreply.github.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+numpy = "^1.20.1"
+
+[tool.poetry.dev-dependencies]
+pycodestyle = "^2.6.0"
+isort = "^5.7.0"
+green = "^3.2.5"
+pylint = "^2.7.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
