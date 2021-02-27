@@ -1,9 +1,14 @@
 [tool.poetry]
 name = "daylio-parser"
-version = "0.1.0"
+version = "0.1.1"
 description = "A Python module to parse Daylio exports"
 authors = ["Meesha <44530786+meesha7@users.noreply.github.com>"]
 license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/meesha7/daylio-parser"
+repository = "https://github.com/meesha7/daylio-parser"
+documentation = "https://daylio-parser.readthedocs.io/en/latest/"
+keywords = ["daylio", "parser", "stats"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
