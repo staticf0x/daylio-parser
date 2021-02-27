@@ -12,6 +12,11 @@ from daylio_parser.parser import Entry, Parser
 
 class TestParser(TestCase):
     def test_load_csv(self):
+        """
+        Test that loading the CSV correctly parses the data
+        into Entry objects.
+        """
+
         here = pathlib.Path(__file__).parent.resolve()
 
         parser = Parser()

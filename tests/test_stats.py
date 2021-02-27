@@ -11,14 +11,22 @@ from daylio_parser.parser import Entry, Parser
 from daylio_parser.stats import activity_moods, average_moods
 
 
-class TestParser(TestCase):
+class TestStats(TestCase):
     def setUp(self):
+        """
+        Load the test CSV for all test methods.
+        """
+
         here = pathlib.Path(__file__).parent.resolve()
 
         parser = Parser()
         self.entries = parser.load_csv(here/'data'/'test_data.csv')
 
     def test_average_moods(self):
+        """
+        Test computing average moods (day by day) from the CSV.
+        """
+
         avg_moods = average_moods(self.entries)
 
         expected = [
@@ -32,6 +40,10 @@ class TestParser(TestCase):
         self.assertEqual(avg_moods, expected)
 
     def test_activity_moods(self):
+        """
+        Test mood averages for each activity.
+        """
+
         moods = activity_moods(self.entries)
 
         self.assertAlmostEqual(moods['work'][0], 4.0, 0)
