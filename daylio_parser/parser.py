@@ -48,16 +48,15 @@ class Parser:
         """
 
         entries = []
-        csv_reader = csv.reader(f, delimiter=',', quotechar='"')
-        next(csv_reader)  # Skip header
+        csv_reader = csv.DictReader(f, delimiter=',', quotechar='"')
 
         for row in csv_reader:
             # Raw data
-            date_str = row[0]
-            time_str = row[3]
-            mood_str = row[4]
-            activities = row[5]
-            notes = row[6]
+            date_str = row['full_date']
+            time_str = row['time']
+            mood_str = row['mood']
+            activities = row['activities']
+            notes = row['note']
 
             mood = self.config.get(mood_str)
 
