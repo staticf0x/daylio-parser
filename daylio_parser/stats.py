@@ -29,7 +29,7 @@ class Stats:
     A class to compute stats, interpolate data and so on.
     """
 
-    def __init__(self, entries: List[Entry], config: MoodConfig=None):
+    def __init__(self, entries: List[Entry], config: MoodConfig = None):
         self.entries = entries
         self.config = config
 
@@ -61,7 +61,6 @@ class Stats:
 
         return result
 
-
     def activity_moods(self) -> Dict[str, Tuple[float, float]]:
         """
         Computes average moods for each activity in entries.
@@ -81,7 +80,6 @@ class Stats:
             activities_avg[activity] = (np.mean(moods), np.std(moods))
 
         return activities_avg
-
 
     def split_into_bands(self):
         """
