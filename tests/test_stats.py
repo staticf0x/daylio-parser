@@ -55,10 +55,6 @@ class TestStats(TestCase):
         self.assertAlmostEqual(moods['programming'][0], 5.0, 0)
         self.assertAlmostEqual(moods['programming'][1], 0, 0)
 
-    @skip('TODO: test this method')
-    def test_split_into_bands(self):
-        split_data = self.stats.split_into_bands()
-
     @skip('TODO: implement Stats.stability')
     def test_stability(self):
         """

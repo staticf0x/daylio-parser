@@ -10,6 +10,7 @@ A Python module to parse Daylio CSV exports
 - [x] Parse CSV into entries (parser.py)
 - [x] Implement MoodConfig (config.py) to allow multiple moods
     - [x] Plus a default config for clean Daylio installs
+    - [ ] Color generator for situations when there's too many moods
 - [ ] Stats
     - [ ] Mood stability algorithm
     - [x] Average moods by day
@@ -18,7 +19,7 @@ A Python module to parse Daylio CSV exports
     - [ ] Generate data for tag clouds (i.e. find most used words in notes)
 - [ ] Prepare data for plotting
     - [x] Splitting entries into bands
-    - [ ] Interpolating data for smooth charts
+    - [x] Interpolating data for smooth charts
     - [ ] Calculating rolling mean
 - [ ] Re-export data into other formats
     - [ ] JSON

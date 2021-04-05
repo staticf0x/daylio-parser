@@ -81,28 +81,6 @@ class Stats:
 
         return activities_avg
 
-    def split_into_bands(self):
-        """
-        Splits input entries into bands given by config.
-        """
-
-        # {mood_name: masked_array}
-        split_data = dict.fromkeys([mood.name for mood in self.config.moods])
-
-        # Mood values from entries
-        moods = np.array([e.mood.level for e in self.entries])
-
-        for mood in self.config.moods:
-            # Upper bound
-            masked_data = np.ma.masked_where(moods >= mood.boundaries[1], moods)
-
-            # Lower bound
-            masked_data = np.ma.masked_where(moods < mood.boundaries[0], masked_data)
-
-            split_data[mood.name] = masked_data
-
-        return split_data
-
     def stability(self, mood_levels: List[float]) -> int:
         """
         Return percent stability for given list of mood levels.
