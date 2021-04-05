@@ -27,16 +27,13 @@ class PlotData:
 
         self.__stats = stats.Stats(entries, config)
 
-    def split_into_bands(self):
+    def split_into_bands(self, moods):
         """
         Splits input entries into bands given by config.
         """
 
         # {mood_name: masked_array}
         split_data = dict.fromkeys([mood.name for mood in self.config.moods])
-
-        # Mood values from entries
-        moods = np.array([e.mood.level for e in self.entries])
 
         for mood in self.config.moods:
             # Upper bound
@@ -49,12 +46,13 @@ class PlotData:
 
         return split_data
 
-    def interpolate(self, interpolate_steps: int = 360):
+    def interpolate(self, avg_moods=None, interpolate_steps: int = 360):
         """
         Interpolate missing values between midnights
         """
 
-        avg_moods = self.__stats.average_moods()
+        if avg_moods is None:
+            avg_moods = self.__stats.average_moods()
 
         steps = int(interpolate_steps)
 

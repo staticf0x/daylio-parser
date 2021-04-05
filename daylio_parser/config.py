@@ -41,7 +41,7 @@ class MoodConfig:
         with a default set of 5 moods.
         """
 
-        self.moods = []
+        self.moods: List[Mood] = []
         self.__map = {}
 
         if mood_list:
