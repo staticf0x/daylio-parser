@@ -55,6 +55,12 @@ class TestStats(TestCase):
         self.assertAlmostEqual(moods['programming'][0], 5.0, 0)
         self.assertAlmostEqual(moods['programming'][1], 0, 0)
 
+    def test_mean(self):
+        mean, std = self.stats.mean()
+
+        self.assertAlmostEqual(mean, 4.15625, 5)
+        self.assertAlmostEqual(std, 1.2275, 4)
+
     @skip('TODO: implement Stats.stability')
     def test_stability(self):
         """

@@ -81,6 +81,15 @@ class Stats:
 
         return activities_avg
 
+    def mean(self):
+        """
+        Returns mean, std from all entries.
+        """
+
+        mood_levels = [x.mood.level for x in self.entries]
+
+        return np.mean(mood_levels), np.std(mood_levels)
+
     def stability(self, mood_levels: List[float]) -> int:
         """
         Return percent stability for given list of mood levels.
