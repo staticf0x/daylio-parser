@@ -70,3 +70,55 @@ class TestStats(TestCase):
         self.assertEqual(self.stats.stability([3]), 100)
         self.assertEqual(self.stats.stability([4, 3, 4, 2, 3, 2, 4, 3]), 68)
         self.assertEqual(self.stats.stability([4, 3, 4, 2, 3, 2, 4, 3, 4, 4, 4]), 81)
+
+    def test_rolling_mean_2(self):
+        """
+        Test rolling mean of data for N=2
+        """
+
+        data = self.stats.rolling_mean(2)
+
+        expected_data = [
+            (datetime.date(2020, 5, 25), np.nan),
+            # Missing day in CSV
+            (datetime.date(2020, 5, 27), 3.15),
+            (datetime.date(2020, 5, 28), 4.45),
+            (datetime.date(2020, 5, 29), 4.8),
+            (datetime.date(2020, 5, 30), 5.0),
+        ]
+
+        self.__assert_mood_data_equal(data, expected_data)
+
+    def test_rolling_mean_5(self):
+        """
+        Test rolling mean of data for N=5
+        """
+
+        data = self.stats.rolling_mean(5)
+
+        expected_data = [
+            (datetime.date(2020, 5, 25), np.nan),
+            # Missing day in CSV
+            (datetime.date(2020, 5, 27), np.nan),
+            (datetime.date(2020, 5, 28), np.nan),
+            (datetime.date(2020, 5, 29), np.nan),
+            (datetime.date(2020, 5, 30), 4.18),
+        ]
+
+        self.__assert_mood_data_equal(data, expected_data)
+
+    def __assert_mood_data_equal(self, data, expected_data):
+        """
+        Compare two arrays of (datetime, avg_mood)
+        """
+
+        self.assertEqual(len(list(data)), len(list(expected_data)))
+
+        for first, second in zip(data, expected_data):
+            self.assertEqual(first[0], second[0])
+
+            if np.isnan(first[1]):
+                self.assertTrue(np.isnan(first[1]))
+                self.assertTrue(np.isnan(second[1]))
+            else:
+                self.assertAlmostEquals(first[1], second[1], 3)

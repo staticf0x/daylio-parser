@@ -90,6 +90,29 @@ class Stats:
 
         return np.mean(mood_levels), np.std(mood_levels)
 
+    def rolling_mean(self, N=5):
+        """
+        Compute rolling mean for the average moods, where N is the
+        window size
+        """
+
+        data = np.array(self.average_moods())
+
+        # Compute the rolling mean for our data
+        # Moods are stored in the 1st column, dates in 0th
+        filtered_data = np.convolve(data[:, 1], np.ones((N, ))/N, mode='valid')
+        filtered_data = filtered_data.astype(np.float64).round(2)
+
+        # Fill the missing entries with NaN,
+        # so we can replace the original column
+        # with filtered data
+        nans = np.zeros(N - 1)
+        nans[:] = np.nan
+        filtered_data = np.concatenate((nans, filtered_data))
+        data[:, 1] = filtered_data
+
+        return data
+
     def stability(self, mood_levels: List[float]) -> int:
         """
         Return percent stability for given list of mood levels.
