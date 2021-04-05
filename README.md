@@ -1,5 +1,5 @@
 [![ci-badge][]][ci-link] [![docs-badge][]][docs-link]
-[![py-versions-badge][]][] [![pypi-badge][]][pypi-link]
+[![py-versions-badge][]][pypi-link] [![pypi-badge][]][pypi-link]
 
 # daylio-parser
 
