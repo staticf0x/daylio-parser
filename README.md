@@ -40,7 +40,7 @@ Running all checks with tox prior to running GitHub actions:
 - [ ] Prepare data for plotting
     - [x] Splitting entries into bands
     - [x] Interpolating data for smooth charts
-    - [ ] Calculating rolling mean
+    - [x] Calculating rolling mean
 - [ ] Re-export data into other formats
     - [ ] JSON
 

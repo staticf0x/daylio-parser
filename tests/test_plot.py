@@ -30,13 +30,11 @@ class TestPlotData(TestCase):
     def test_interpolate(self):
         dates, moods = self.plotdata.interpolate()
 
-        first_date = dates[0]
+        first_date = dates[0].date()
         first_day = []
 
         for date, mood in zip(dates, moods):
-            if date.year == first_date.year\
-                and date.month == first_date.month\
-                and date.day == first_date.day:
+            if date.date() == first_date:
                 first_day.append((date, mood))
 
         first_entry = first_day[0]
