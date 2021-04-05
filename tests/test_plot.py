@@ -11,7 +11,7 @@ from daylio_parser.parser import Parser
 from daylio_parser.plot import PlotData
 
 
-class TestPlot(TestCase):
+class TestPlotData(TestCase):
     def setUp(self):
         """
         Load the test CSV for all test methods.
