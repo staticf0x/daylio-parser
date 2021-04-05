@@ -35,7 +35,7 @@ Running all checks with tox prior to running GitHub actions:
     - [ ] Mood stability algorithm
     - [x] Average moods by day
     - [x] Average mood by activity
-    - [ ] Find mood periods — aka periods of moods meeting certain criteria
+    - [x] Find mood periods — aka periods of moods meeting certain criteria
     - [ ] Generate data for tag clouds (i.e. find most used words in notes)
     - [ ] Extend mood period search — search above, below and in between thresholds
 - [ ] Prepare data for plotting
