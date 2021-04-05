@@ -14,6 +14,8 @@ from daylio_parser.stats import Stats
 
 
 class TestStats(TestCase):
+    # TODO: Test low/high periods -- need more data for that
+
     def setUp(self):
         """
         Load the test CSV for all test methods.
