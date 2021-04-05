@@ -5,6 +5,26 @@
 
 A Python module to parse Daylio CSV exports
 
+## Development
+
+Install `poetry`, `tox` and `tox-poetry`.
+
+Installing the virtual env:
+
+`$ poetry install`
+
+Switching into the venv:
+
+`$ poetry shell`
+
+Running test:
+
+`$ green tests/`
+
+Running all checks with tox prior to running GitHub actions:
+
+`$ tox`
+
 ## TODO
 
 - [x] Parse CSV into entries (parser.py)
