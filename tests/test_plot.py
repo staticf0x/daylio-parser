@@ -56,4 +56,4 @@ class TestPlotData(TestCase):
 
     def test_max_interpolate_steps(self):
         with self.assertRaises(ValueError):
-            self.plotdata.interpolate(9999)
+            self.plotdata.interpolate(None, 9999)
