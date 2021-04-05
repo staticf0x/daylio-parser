@@ -108,12 +108,16 @@ class Stats:
         Return percent stability for given list of mood levels.
         """
 
+        raise NotImplementedError('Mood stability is not yet implemented.')
+
         return 0
 
     def stability_by_month(self) -> List[Tuple[datetime.date, int]]:
         """
         Computes mood stability for each year-month in given entries.
         """
+
+        raise NotImplementedError('Mood stability is not yet implemented.')
 
         group_by_date = {}
 
