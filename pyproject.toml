@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "daylio-parser"
-version = "0.2.0"
+version = "0.2.1"
 description = "A Python module to parse Daylio exports"
 authors = ["Meesha <44530786+meesha7@users.noreply.github.com>"]
 license = "MIT"
