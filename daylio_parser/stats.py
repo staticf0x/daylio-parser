@@ -113,7 +113,7 @@ class Stats:
 
         return data
 
-    def find_high_periods(self, threshold=4, min_duration=4):
+    def find_high_periods(self, threshold: float = 4, min_duration: int = 4) -> List[MoodPeriod]:
         """
         Find periods of elevated mood (hypomania, mania)
 
@@ -159,7 +159,7 @@ class Stats:
 
         return dates
 
-    def find_low_periods(self, threshold=3, min_duration=5):
+    def find_low_periods(self, threshold: float = 3, min_duration: int = 5) -> List[MoodPeriod]:
         """
         Find periods of low mood (depression)
 
