@@ -45,11 +45,7 @@ class Stats:
         group_by_date = {}
 
         for entry in self.entries:
-            date = datetime.date(
-                entry.datetime.year,
-                entry.datetime.month,
-                entry.datetime.day
-            )
+            date = datetime.date(entry.datetime.year, entry.datetime.month, entry.datetime.day)
 
             group_by_date.setdefault(date, [])
             group_by_date[date].append(entry.mood.level)
@@ -100,7 +96,7 @@ class Stats:
 
         # Compute the rolling mean for our data
         # Moods are stored in the 1st column, dates in 0th
-        filtered_data = np.convolve(data[:, 1], np.ones((N, ))/N, mode='valid')
+        filtered_data = np.convolve(data[:, 1], np.ones((N,)) / N, mode='valid')
         filtered_data = filtered_data.astype(np.float64).round(2)
 
         # Fill the missing entries with NaN,
@@ -134,10 +130,9 @@ class Stats:
             if start_date and mood <= threshold:
                 end_date = date
 
-                period = MoodPeriod(start_date,
-                                    end_date,
-                                    (end_date - start_date).days,
-                                    np.mean(moods))
+                period = MoodPeriod(
+                    start_date, end_date, (end_date - start_date).days, np.mean(moods)
+                )
 
                 if period.duration >= min_duration:
                     dates.append(period)
@@ -149,10 +144,9 @@ class Stats:
             if start_date:
                 end_date = date
 
-                period = MoodPeriod(start_date,
-                                    end_date,
-                                    (end_date - start_date).days,
-                                    np.mean(moods))
+                period = MoodPeriod(
+                    start_date, end_date, (end_date - start_date).days, np.mean(moods)
+                )
 
                 if period.duration >= min_duration:
                     dates.append(period)
@@ -180,10 +174,9 @@ class Stats:
             if start_date and mood >= threshold:
                 end_date = date
 
-                period = MoodPeriod(start_date,
-                                    end_date,
-                                    (end_date - start_date).days,
-                                    np.mean(moods))
+                period = MoodPeriod(
+                    start_date, end_date, (end_date - start_date).days, np.mean(moods)
+                )
 
                 if period.duration >= min_duration:
                     dates.append(period)
@@ -195,10 +188,9 @@ class Stats:
             if start_date:
                 end_date = date
 
-                period = MoodPeriod(start_date,
-                                    end_date,
-                                    (end_date - start_date).days,
-                                    np.mean(moods))
+                period = MoodPeriod(
+                    start_date, end_date, (end_date - start_date).days, np.mean(moods)
+                )
 
                 if period.duration >= min_duration:
                     dates.append(period)
@@ -224,11 +216,7 @@ class Stats:
         group_by_date = {}
 
         for entry in self.entries:
-            date = datetime.date(
-                entry.datetime.year,
-                entry.datetime.month,
-                1
-            )
+            date = datetime.date(entry.datetime.year, entry.datetime.month, 1)
 
             group_by_date.setdefault(date, [])
             group_by_date[date].append(entry.mood.level)

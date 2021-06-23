@@ -72,12 +72,7 @@ class Parser:
             t = datetime.time(hour=t.hour, minute=t.minute)
             dt = dt.combine(dt, t)
 
-            entry = Entry(
-                dt,
-                mood,
-                [] if activities == '' else activities.split(' | '),
-                notes
-            )
+            entry = Entry(dt, mood, [] if activities == '' else activities.split(' | '), notes)
 
             entries.append(entry)
 

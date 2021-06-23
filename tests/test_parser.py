@@ -15,7 +15,7 @@ class TestParser(TestCase):
         here = pathlib.Path(__file__).parent.resolve()
 
         self.parser = Parser()
-        self.entries = self.parser.load_csv(here/'data'/'test_data.csv')
+        self.entries = self.parser.load_csv(here / 'data' / 'test_data.csv')
 
     def test_load_csv(self):
         """
@@ -24,17 +24,14 @@ class TestParser(TestCase):
         """
 
         first_entry = Entry(
-            datetime.datetime(2020, 5, 25, 7, 9),
-            self.parser.config.get('meh'),
-            [],
-            ''
+            datetime.datetime(2020, 5, 25, 7, 9), self.parser.config.get('meh'), [], ''
         )
 
         last_entry = Entry(
             datetime.datetime(2020, 5, 30, 18, 50),
             self.parser.config.get('rad'),
             ['friends', 'gaming', 'programming', 'nap'],
-            'Awesome'
+            'Awesome',
         )
 
         self.assertEqual(self.entries[0], first_entry)

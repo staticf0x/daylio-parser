@@ -61,7 +61,7 @@ class PlotData:
 
         dates = []
         moods = []
-        step = 1440//steps  # Step size in minutes
+        step = 1440 // steps  # Step size in minutes
 
         # Add one day with the same mood, so that we have
         # the last day included in the charts too
@@ -93,16 +93,16 @@ class PlotData:
 
             value_diff = next_point[1] - current_point[1]  # Mood difference between days
             time_diff = steps  # Time difference a.k.a. number of buckets
-            coef = value_diff/time_diff  # How much the mood changes in one step
+            coef = value_diff / time_diff  # How much the mood changes in one step
 
             for step_n in range(0, steps):
                 # Simple linear interpolation
-                next_value = step_n*coef + current_point[1]
+                next_value = step_n * coef + current_point[1]
 
                 # step*step_n == number of minutes in the current day
                 # just split it into hours and minutes for time object
-                hour = 0 if step_n == 0 else (step*step_n)//60
-                minute = 0 if step_n == 0 else (step*step_n) % 60
+                hour = 0 if step_n == 0 else (step * step_n) // 60
+                minute = 0 if step_n == 0 else (step * step_n) % 60
 
                 next_time = datetime.time(hour=int(hour), minute=int(minute))
                 next_dt = datetime.datetime.combine(current_point[0], next_time)

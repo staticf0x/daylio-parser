@@ -24,7 +24,7 @@ class TestStats(TestCase):
         here = pathlib.Path(__file__).parent.resolve()
 
         parser = Parser()
-        self.entries = parser.load_csv(here/'data'/'test_data.csv')
+        self.entries = parser.load_csv(here / 'data' / 'test_data.csv')
         self.stats = Stats(self.entries)
 
     def test_average_moods(self):

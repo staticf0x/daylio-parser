@@ -20,7 +20,7 @@ class TestPlotData(TestCase):
         here = pathlib.Path(__file__).parent.resolve()
 
         parser = Parser()
-        self.entries = parser.load_csv(here/'data'/'test_data.csv')
+        self.entries = parser.load_csv(here / 'data' / 'test_data.csv')
         self.plotdata = PlotData(self.entries)
 
     @skip('TODO: test this method')
