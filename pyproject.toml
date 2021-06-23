@@ -12,16 +12,16 @@ keywords = ["daylio", "parser", "stats"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-numpy = "^1.20.1"
+numpy = "^1.20"
 
 [tool.poetry.dev-dependencies]
-pycodestyle = "^2.6.0"
-isort = "^5.7.0"
-green = "^3.2.5"
-pylint = "^2.7.1"
-Sphinx = "^3.5.1"
-sphinx-rtd-theme = "^0.5.1"
-tox = "^3.23.1"
+pycodestyle = "^2.6"
+isort = "^5.9"
+green = "^3.2"
+pylint = "^2.8"
+Sphinx = "^4.0"
+sphinx-rtd-theme = "^0.5"
+tox = "^3.23"
 black = "^21.6b0"
 
 [build-system]
