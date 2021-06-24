@@ -29,9 +29,9 @@ jobs:
     - name: Run Tests
       run: |
         poetry run green
-    - name: Check PEP8
+    - name: Check flake8
       run: |
-        poetry run pycodestyle daylio_parser tests
+        poetry run flake8 daylio_parser tests
     - name: Check isort
       run: |
         poetry run isort --check-only  daylio_parser tests

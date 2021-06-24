@@ -25,7 +25,7 @@ class TestPlotData(TestCase):
 
     @skip('TODO: test this method')
     def test_split_into_bands(self):
-        split_data = self.plotdata.split_into_bands()
+        _ = self.plotdata.split_into_bands()
 
     def test_interpolate(self):
         dates, moods = self.plotdata.interpolate()

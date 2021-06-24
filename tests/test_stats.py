@@ -9,7 +9,7 @@ from unittest import TestCase, skip
 
 import numpy as np
 
-from daylio_parser.parser import Entry, Parser
+from daylio_parser.parser import Parser
 from daylio_parser.stats import Stats
 
 
