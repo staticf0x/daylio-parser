@@ -17,7 +17,7 @@ Switching into the venv:
 
 `$ poetry shell`
 
-Running test:
+Running test for the current python version:
 
 `$ green tests/`
 

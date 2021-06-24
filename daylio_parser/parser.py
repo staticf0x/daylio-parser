@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Export CSV parser
-"""
+"""Export CSV parser."""
 
 import csv
 import datetime
@@ -13,9 +10,7 @@ from .config import Mood, MoodConfig
 
 @dataclass
 class Entry:
-    """
-    Data for one day
-    """
+    """Data for one day."""
 
     datetime: datetime.datetime
     mood: Mood
@@ -24,29 +19,22 @@ class Entry:
 
 
 class Parser:
-    """
-    Parser for the CSV file
-    """
+    """Parser for the CSV file."""
 
     def __init__(self, config=None):
+        """Create the object. If config is None, a default MoodConfig is created."""
         if not config:
             self.config = MoodConfig()
         else:
             self.config = config
 
     def load_csv(self, path):
-        """
-        Load data from a CSV file
-        """
-
+        """Load data from a CSV file."""
         with open(path, 'r') as fread:
             return self.load_from_buffer(fread)
 
     def load_from_buffer(self, f):
-        """
-        Load data from any file-like object
-        """
-
+        """Load data from any file-like object."""
         entries = []
         csv_reader = csv.DictReader(f, delimiter=',', quotechar='"')
 

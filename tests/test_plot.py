@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Test plot.py
-"""
+"""Test plot.py"""
 
 import datetime
 import pathlib
@@ -13,9 +10,7 @@ from daylio_parser.plot import PlotData
 
 class TestPlotData(TestCase):
     def setUp(self):
-        """
-        Load the test CSV for all test methods.
-        """
+        """Load the test CSV for all test methods."""
 
         here = pathlib.Path(__file__).parent.resolve()
 

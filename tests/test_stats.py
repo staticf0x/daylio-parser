@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Test stats.py
-"""
-
 import datetime
 import pathlib
 from unittest import TestCase, skip

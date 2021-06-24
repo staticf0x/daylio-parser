@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Test config.py
-"""
+"""Test config.py"""
 
 from unittest import TestCase
 
@@ -10,9 +7,7 @@ from daylio_parser.config import Mood, MoodConfig
 
 class TestConfig(TestCase):
     def test_default_mood_list(self):
-        """
-        Test that the default config contains 5 moods with known boundaries.
-        """
+        """Test that the default config contains 5 moods with known boundaries."""
 
         m = MoodConfig()
 
@@ -37,9 +32,7 @@ class TestConfig(TestCase):
         self.assertEqual(m.moods[4].boundaries, (4.5, 5.01))
 
     def test_custom_moods(self):
-        """
-        Here we test that custom moods have correctly computed boundaries.
-        """
+        """Here we test that custom moods have correctly computed boundaries."""
 
         moods = [
             ('bad', 'red'),
@@ -62,9 +55,7 @@ class TestConfig(TestCase):
         self.assertEqual(m.moods[2].boundaries, (2.5, 3.01))
 
     def test_get_mood(self):
-        """
-        Test getter by mood name.
-        """
+        """Test getter by mood name."""
 
         m = MoodConfig()
 

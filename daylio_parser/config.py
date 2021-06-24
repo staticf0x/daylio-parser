@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Configuration objects for the parser and others
-"""
+"""Configuration objects for the parser and others."""
 
 from dataclasses import dataclass
 from typing import List, Tuple
@@ -17,9 +14,7 @@ DEFAULT_MOODS = [
 
 @dataclass
 class Mood:
-    """
-    A class representing a mood level
-    """
+    """A class representing a mood level."""
 
     name: str
     level: int
@@ -29,18 +24,17 @@ class Mood:
 
 class MoodConfig:
     """
-    Configure mood levels and their properties
+    Configure mood levels and their properties.
 
     TODO: Add color generator when there's too many moods
     """
 
     def __init__(self, mood_list: List[Tuple[str, str]] = None):
-        """
-        Create the config with a list of moods: [(name, color), ...].
+        """Create the config with a list of moods: [(name, color), ...].
+
         If no moods are provided, then the config is created
         with a default set of 5 moods.
         """
-
         self.moods: List[Mood] = []
         self.__map = {}
 
@@ -50,17 +44,11 @@ class MoodConfig:
             self.__load_moods(DEFAULT_MOODS)
 
     def from_list(self, mood_list: List[Tuple[str, str]]):
-        """
-        Update the config with a list of moods: [(name, color), ...]
-        """
-
+        """Update the config with a list of moods: [(name, color), ...]."""
         self.__load_moods(mood_list)
 
     def get(self, mood_name: str) -> Mood:
-        """
-        Returns a Mood by its name
-        """
-
+        """Return a Mood by its name."""
         return self.__map[mood_name]
 
     def __load_moods(self, mood_list: List[Tuple[str, str]]):

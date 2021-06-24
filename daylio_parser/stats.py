@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Mood statistics
-"""
+"""Mood statistics."""
 
 import datetime
 from dataclasses import dataclass
@@ -14,9 +11,7 @@ from .parser import Entry, MoodConfig
 
 @dataclass
 class MoodPeriod:
-    """
-    A class to represent a closed period of either good or bad mood
-    """
+    """A class to represent a closed period of either good or bad mood."""
 
     start_date: datetime.datetime
     end_date: datetime.datetime
@@ -25,11 +20,10 @@ class MoodPeriod:
 
 
 class Stats:
-    """
-    A class to compute stats, interpolate data and so on.
-    """
+    """A class to compute stats, interpolate data and so on."""
 
     def __init__(self, entries: List[Entry], config: MoodConfig = None):
+        """Create the object. If config is None, a default MoodConfig is created."""
         self.entries = entries
         self.config = config
 
@@ -37,11 +31,10 @@ class Stats:
             self.config = MoodConfig()
 
     def average_moods(self) -> List[Tuple[datetime.date, float]]:
-        """
-        Computes average moods for each day. Returns a list
-        of tuples: [(datetime.date, average mood that day), ...]
-        """
+        """Compute average moods for each day.
 
+        Returns a list of tuples: [(datetime.date, average mood that day), ...]
+        """
         group_by_date = {}
 
         for entry in self.entries:
@@ -58,11 +51,10 @@ class Stats:
         return result
 
     def activity_moods(self) -> Dict[str, Tuple[float, float]]:
-        """
-        Computes average moods for each activity in entries.
+        """Compute average moods for each activity in entries.
+
         Returns a dict: {activity name: (average mood, standard deviation)}
         """
-
         activity_to_mood = {}
 
         for entry in self.entries:
@@ -78,20 +70,13 @@ class Stats:
         return activities_avg
 
     def mean(self):
-        """
-        Returns mean, std from all entries.
-        """
-
+        """Return mean, std from all entries."""
         mood_levels = [x.mood.level for x in self.entries]
 
         return np.mean(mood_levels), np.std(mood_levels)
 
     def rolling_mean(self, N=5):
-        """
-        Compute rolling mean for the average moods, where N is the
-        window size
-        """
-
+        """Compute rolling mean for the average moods, where N is the window size."""
         data = np.array(self.average_moods())
 
         # Compute the rolling mean for our data
@@ -110,12 +95,10 @@ class Stats:
         return data
 
     def find_high_periods(self, threshold: float = 4, min_duration: int = 4) -> List[MoodPeriod]:
-        """
-        Find periods of elevated mood (hypomania, mania)
+        """Find periods of elevated mood (hypomania, mania).
 
         TODO: The threshold is highly individual
         """
-
         start_date = None
         dates = []
         moods = []
@@ -154,12 +137,10 @@ class Stats:
         return dates
 
     def find_low_periods(self, threshold: float = 3, min_duration: int = 5) -> List[MoodPeriod]:
-        """
-        Find periods of low mood (depression)
+        """Find periods of low mood (depression).
 
         TODO: The threshold is highly individual
         """
-
         start_date = None
         dates = []
         moods = []
@@ -198,19 +179,16 @@ class Stats:
         return dates
 
     def stability(self, mood_levels: List[float]) -> int:
-        """
-        Return percent stability for given list of mood levels.
-        """
-
+        """Return percent stability for given list of mood levels."""
         raise NotImplementedError('Mood stability is not yet implemented.')
+
+        if np.std(mood_levels) == 0:
+            return 100
 
         return 0
 
     def stability_by_month(self) -> List[Tuple[datetime.date, int]]:
-        """
-        Computes mood stability for each year-month in given entries.
-        """
-
+        """Compute mood stability for each year-month in given entries."""
         raise NotImplementedError('Mood stability is not yet implemented.')
 
         group_by_date = {}

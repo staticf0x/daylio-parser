@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Utilities to prepare data for plotting
-"""
+"""Utilities to prepare data for plotting."""
 
 import datetime
 from typing import List
@@ -14,11 +11,10 @@ from .parser import Entry
 
 
 class PlotData:
-    """
-    Class to operate on Entries and prepare them for plotting with matplotlib
-    """
+    """Class to operate on Entries and prepare them for plotting with matplotlib."""
 
     def __init__(self, entries: List[Entry], config: MoodConfig = None):
+        """Create the object. If config is None, a default MoodConfig is created."""
         self.entries = entries
         self.config = config
 
@@ -28,10 +24,7 @@ class PlotData:
         self.__stats = stats.Stats(entries, config)
 
     def split_into_bands(self, moods):
-        """
-        Splits input entries into bands given by config.
-        """
-
+        """Split input entries into bands given by config."""
         # {mood_name: masked_array}
         split_data = dict.fromkeys([mood.name for mood in self.config.moods])
 
@@ -47,10 +40,7 @@ class PlotData:
         return split_data
 
     def interpolate(self, avg_moods=None, interpolate_steps: int = 360):
-        """
-        Interpolate missing values between midnights
-        """
-
+        """Interpolate missing values between midnights."""
         if avg_moods is None:
             avg_moods = self.__stats.average_moods()
 

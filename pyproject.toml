@@ -23,6 +23,7 @@ sphinx-rtd-theme = "^0.5"
 tox = "^3.23"
 black = "^21.6b0"
 flake8 = "^3.9.2"
+pydocstyle = "^6.1.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

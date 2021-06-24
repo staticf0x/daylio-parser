@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Test parser.py
-"""
+"""Test parser.py"""
 
 import datetime
 import pathlib
@@ -18,10 +15,7 @@ class TestParser(TestCase):
         self.entries = self.parser.load_csv(here / 'data' / 'test_data.csv')
 
     def test_load_csv(self):
-        """
-        Test that loading the CSV correctly parses the data
-        into Entry objects.
-        """
+        """Test that loading the CSV correctly parses the data into Entry objects."""
 
         first_entry = Entry(
             datetime.datetime(2020, 5, 25, 7, 9), self.parser.config.get('meh'), [], ''
@@ -38,9 +32,7 @@ class TestParser(TestCase):
         self.assertEqual(self.entries[-1], last_entry)
 
     def test_both_hour_formats(self):
-        """
-        Test that both 12 and 24 hour formats are parsed
-        """
+        """Test that both 12 and 24 hour formats are parsed"""
 
         entry_12h = self.entries[0]
         entry_24h = self.entries[1]
