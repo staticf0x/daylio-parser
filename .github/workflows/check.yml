@@ -38,3 +38,6 @@ jobs:
     - name: Check black
       run: |
         poetry run black --check daylio_parser tests
+    - name: Check PEP257
+      run: |
+        poetry run pydocstyle daylio_parser/ tests/
