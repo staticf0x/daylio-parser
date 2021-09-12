@@ -34,25 +34,29 @@ Each mood has its class:
 The whole mood config for your app will be constructed using the
 :py:class:`MoodConfig` class.
 
-.. py:class:: MoodConfig(mood_list = None)
+.. py:class:: MoodConfig(mood_list = None, color_palette = None)
 
     Creates a config with mood_list. If the mood list isn't provided,
     ``DEFAULT_MOODS`` will be used. All moods are automatically
-    numbered (levels are assigned) and boundaries are also calculated.
+    colored using ``color_palette`` and boundaries are also calculated.
     Each boundary is exactly 1 in size, with the first one and the last one
     being only 0.5 in size.
 
-    :param mood_list: A list of moods with (name, color)
+    :param mood_list: A list of moods with (level, name)
+    :param color_palette: A list of colors (hex values or common names)
 
-    :type mood_list: List[Tuple[str, str]]
+    :type mood_list: List[Tuple[int, str]]
+    :type color_palette: List[str]
 
-    .. py:method:: from_list(mood_list) -> None
+    .. py:method:: from_list(mood_list, color_palette = None) -> None
 
         Updates the config with a new list of moods.
 
-        :param mood_list: A list of moods with (name, color)
+        :param mood_list: A list of moods with (level, name)
+        :param color_palette: A list of colors (hex values or common names)
 
         :type mood_list: List[Tuple[str, str]]
+        :type color_palette: List[str]
 
     .. py:method:: get(mood_name) -> Mood
 

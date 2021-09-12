@@ -30,7 +30,6 @@ Running all checks with tox prior to running GitHub actions:
 - [x] Parse CSV into entries (parser.py)
 - [x] Implement MoodConfig (config.py) to allow multiple moods
     - [x] Plus a default config for clean Daylio installs
-    - [ ] Color generator for situations when there's too many moods
 - [ ] Stats
     - [ ] Mood stability algorithm
     - [x] Average moods by day
@@ -38,7 +37,7 @@ Running all checks with tox prior to running GitHub actions:
     - [x] Find mood periods — aka periods of moods meeting certain criteria
     - [ ] Generate data for tag clouds (i.e. find most used words in notes)
     - [ ] Extend mood period search — search above, below and in between thresholds
-- [ ] Prepare data for plotting
+- [x] Prepare data for plotting
     - [x] Splitting entries into bands
     - [x] Interpolating data for smooth charts
     - [x] Calculating rolling mean
