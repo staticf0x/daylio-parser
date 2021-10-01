@@ -30,6 +30,12 @@ class Mood:
     boundaries: Tuple[float, float]
 
 
+class MoodNotFound(Exception):
+    """Exception for moods not being configured yet used in the CSV."""
+
+    pass
+
+
 class MoodConfig:
     """Configure mood levels and their properties."""
 
@@ -63,7 +69,10 @@ class MoodConfig:
 
     def get(self, mood_name: str) -> Mood:
         """Return a Mood by its name."""
-        return self.__map[mood_name]
+        try:
+            return self.__map[mood_name]
+        except KeyError:
+            raise MoodNotFound(f"Mood '{mood_name}' is not configured")
 
     def __load_moods(self, mood_list: List[Tuple[int, str]], color_palette: List[str] = None):
         self.__validate_mood_list(mood_list)
