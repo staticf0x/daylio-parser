@@ -2,20 +2,20 @@
 
 import csv
 import datetime
-from dataclasses import dataclass
 from typing import List
+
+from pydantic import BaseModel
 
 from .config import Mood, MoodConfig
 
 
-@dataclass
-class Entry:
+class Entry(BaseModel):
     """Data for one day."""
 
     datetime: datetime.datetime
     mood: Mood
     activities: List[str]
-    notes: str
+    notes: str = ""
 
 
 class Parser:
@@ -30,40 +30,39 @@ class Parser:
 
     def load_csv(self, path):
         """Load data from a CSV file."""
-        with open(path, 'r') as fread:
+        with open(path, "r") as fread:
             return self.load_from_buffer(fread)
 
     def load_from_buffer(self, f):
         """Load data from any file-like object."""
         entries = []
-        csv_reader = csv.DictReader(f, delimiter=',', quotechar='"')
+        csv_reader = csv.DictReader(f, delimiter=",", quotechar='"')
 
         for row in csv_reader:
-            # Raw data
-            date_str = row['full_date']
-            time_str = row['time']
-            mood_str = row['mood']
-            activities = row['activities']
-            notes = row['note']
-
-            mood = self.config.get(mood_str)
+            mood = self.config.get(row["mood"])
 
             # Create entry object
-            dt = datetime.datetime.strptime(date_str, '%Y-%m-%d')
+            dt = datetime.datetime.strptime(row["full_date"], "%Y-%m-%d")
 
             try:
-                t = datetime.datetime.strptime(time_str, '%I:%M %p')
+                t = datetime.datetime.strptime(row["time"], "%I:%M %p")
             except ValueError:
-                t = datetime.datetime.strptime(time_str, '%H:%M')
+                t = datetime.datetime.strptime(row["time"], "%H:%M")
 
             # TODO: There has to be a better way
             t = datetime.time(hour=t.hour, minute=t.minute)
             dt = dt.combine(dt, t)
 
-            entry = Entry(dt, mood, [] if activities == '' else activities.split(' | '), notes)
+            entry = Entry(
+                datetime=dt,
+                mood=mood,
+                activities=[] if row["activities"] == "" else row["activities"].split(" | "),
+                notes=row["note"],
+            )
 
             entries.append(entry)
 
+        # Will be oldest to newest
         entries.reverse()
 
         return entries
