@@ -44,8 +44,8 @@ Running all checks with tox prior to running GitHub actions:
 - [ ] Re-export data into other formats
     - [ ] JSON
 
-[ci-link]: https://github.com/meesha7/daylio-parser/actions/workflows/check.yml
-[ci-badge]: https://img.shields.io/github/workflow/status/meesha7/daylio-parser/Check/master
+[ci-link]: https://github.com/staticf0x/daylio-parser/actions/workflows/check.yml
+[ci-badge]: https://img.shields.io/github/workflow/status/staticf0x/daylio-parser/Check/master
 [docs-link]: https://daylio-parser.readthedocs.io/en/latest/
 [docs-badge]: https://img.shields.io/readthedocs/daylio-parser/latest
 [py-versions-badge]: https://img.shields.io/pypi/pyversions/daylio-parser

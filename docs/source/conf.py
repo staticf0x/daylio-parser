@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'daylio-parser'
-copyright = '2021, Meesha'
-author = 'Meesha'
+copyright = '2021 - 2022, staticf0x'
+author = 'staticf0x'
 
 # The full version, including alpha/beta/rc tags
 release = '0.1.0'
@@ -30,8 +30,7 @@ release = '0.1.0'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
-]
+extensions = []
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -53,6 +52,7 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 if not on_rtd:
     import sphinx_rtd_theme
+
     html_theme = 'sphinx_rtd_theme'
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 

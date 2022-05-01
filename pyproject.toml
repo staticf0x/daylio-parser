@@ -2,11 +2,11 @@
 name = "daylio-parser"
 version = "0.3.0"
 description = "A Python module to parse Daylio exports"
-authors = ["Meesha <44530786+meesha7@users.noreply.github.com>"]
+authors = ["staticf0x <44530786+staticf0x@users.noreply.github.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/meesha7/daylio-parser"
-repository = "https://github.com/meesha7/daylio-parser"
+homepage = "https://github.com/staticf0x/daylio-parser"
+repository = "https://github.com/staticf0x/daylio-parser"
 documentation = "https://daylio-parser.readthedocs.io/en/latest/"
 keywords = ["daylio", "parser", "stats"]
 
