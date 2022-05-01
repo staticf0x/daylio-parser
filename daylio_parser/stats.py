@@ -13,8 +13,8 @@ from .parser import Entry, MoodConfig
 class MoodPeriod(BaseModel):
     """A class to represent a closed period of either good or bad mood."""
 
-    start_date: datetime.datetime
-    end_date: datetime.datetime
+    start: datetime.date
+    end: datetime.date
     duration: PositiveInt
     avg_mood: confloat(ge=1.0, le=5.0)
 
@@ -112,9 +112,11 @@ class Stats:
 
             if start_date and mood <= threshold:
                 end_date = date
-
                 period = MoodPeriod(
-                    start_date, end_date, (end_date - start_date).days, np.mean(moods)
+                    start=start_date,
+                    end=end_date,
+                    duration=(end_date - start_date).days,
+                    avg_mood=np.mean(moods),
                 )
 
                 if period.duration >= min_duration:
@@ -128,7 +130,10 @@ class Stats:
                 end_date = date
 
                 period = MoodPeriod(
-                    start_date, end_date, (end_date - start_date).days, np.mean(moods)
+                    start=start_date,
+                    end=end_date,
+                    duration=(end_date - start_date).days,
+                    avg_mood=np.mean(moods),
                 )
 
                 if period.duration >= min_duration:
@@ -156,7 +161,10 @@ class Stats:
                 end_date = date
 
                 period = MoodPeriod(
-                    start_date, end_date, (end_date - start_date).days, np.mean(moods)
+                    start=start_date,
+                    end=end_date,
+                    duration=(end_date - start_date).days,
+                    avg_mood=np.mean(moods),
                 )
 
                 if period.duration >= min_duration:
@@ -170,7 +178,10 @@ class Stats:
                 end_date = date
 
                 period = MoodPeriod(
-                    start_date, end_date, (end_date - start_date).days, np.mean(moods)
+                    start=start_date,
+                    end=end_date,
+                    duration=(end_date - start_date).days,
+                    avg_mood=np.mean(moods),
                 )
 
                 if period.duration >= min_duration:
