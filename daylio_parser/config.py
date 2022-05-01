@@ -1,7 +1,9 @@
 """Configuration objects for the parser and others."""
 
-from dataclasses import dataclass
-from typing import List, Tuple
+from typing import List, NewType, Tuple
+
+from pydantic import BaseModel, ValidationError, validator
+from pydantic.types import conint
 
 DEFAULT_MOODS = [
     (1, 'awful'),
@@ -19,15 +21,26 @@ DEFAULT_COLOR_PALETTE = [
     '#FF8500',
 ]
 
+MoodList = NewType("MoodList", List[Tuple[int, str]])
 
-@dataclass
-class Mood:
+
+class Mood(BaseModel):
     """A class representing a mood level."""
 
     name: str
-    level: int
+    level: conint(ge=1, le=5)
     color: str
     boundaries: Tuple[float, float]
+
+    @validator("boundaries")
+    def greater_than_previous(cls, v):
+        """Validate that the boundaries are always (lower, higher)."""
+        lower, higher = v
+
+        if lower >= higher:
+            raise ValidationError(f"Boundary {lower} must be lower than {higher}")
+
+        return (lower, higher)
 
 
 class MoodNotFound(Exception):
@@ -39,7 +52,7 @@ class MoodNotFound(Exception):
 class MoodConfig:
     """Configure mood levels and their properties."""
 
-    def __init__(self, mood_list: List[Tuple[int, str]] = None, color_palette: List[str] = None):
+    def __init__(self, mood_list: MoodList = None, color_palette: List[str] = None):
         """Create the config with a list of moods: [(level, name), ...].
 
         If no moods are provided, then the config is created
@@ -56,7 +69,7 @@ class MoodConfig:
 
         self.__load_moods(mood_list, color_palette)
 
-    def from_list(self, mood_list: List[Tuple[int, str]], color_palette: List[str] = None):
+    def from_list(self, mood_list: MoodList, color_palette: List[str] = None):
         """
         Update the config with a list of moods: [(level, name), ...].
 
@@ -74,7 +87,7 @@ class MoodConfig:
         except KeyError:
             raise MoodNotFound(f"Mood '{mood_name}' is not configured")
 
-    def __load_moods(self, mood_list: List[Tuple[int, str]], color_palette: List[str] = None):
+    def __load_moods(self, mood_list: MoodList, color_palette: List[str] = None):
         self.__validate_mood_list(mood_list)
         self.__validate_color_palette(color_palette)
 
@@ -96,12 +109,14 @@ class MoodConfig:
 
             boundaries = (b_lower, b_upper)
 
-            mood = Mood(name, level, color_palette[level - 1], boundaries)
+            mood = Mood(
+                name=name, level=level, color=color_palette[level - 1], boundaries=boundaries
+            )
 
             self.moods.append(mood)
             self.__map[name] = mood
 
-    def __validate_mood_list(self, mood_list: List[Tuple[int, str, str]]):
+    def __validate_mood_list(self, mood_list: MoodList):
         """Validate the provided mood list."""
         for mood in mood_list:
             if not len(mood) == 2:

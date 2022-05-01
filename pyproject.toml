@@ -13,10 +13,10 @@ keywords = ["daylio", "parser", "stats"]
 [tool.poetry.dependencies]
 python = "^3.8"
 numpy = "^1.22"
+pydantic = "^1.9.0"
 
 [tool.poetry.dev-dependencies]
 isort = "^5.10"
-green = "^3.2"
 pylint = "^2.13"
 Sphinx = "^4.0"
 sphinx-rtd-theme = "^1.0.0"
@@ -24,6 +24,8 @@ tox = "^3.23"
 black = "^22.3.0"
 flake8 = "^4.0.1"
 pydocstyle = "^6.1.1"
+pytest = "^7.1.2"
+pytest-cov = "^3.0.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
