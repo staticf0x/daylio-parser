@@ -47,7 +47,7 @@ class PlotData:
         steps = int(interpolate_steps)
 
         if steps > 1440:
-            raise ValueError('Max number of steps is 1440')
+            raise ValueError("Max number of steps is 1440")
 
         dates = []
         moods = []
