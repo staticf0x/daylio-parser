@@ -11,18 +11,18 @@ documentation = "https://daylio-parser.readthedocs.io/en/latest/"
 keywords = ["daylio", "parser", "stats"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
-numpy = "^1.20"
+python = "^3.8"
+numpy = "^1.22"
 
 [tool.poetry.dev-dependencies]
-isort = "^5.9"
+isort = "^5.10"
 green = "^3.2"
-pylint = "^2.8"
+pylint = "^2.13"
 Sphinx = "^4.0"
-sphinx-rtd-theme = "^0.5"
+sphinx-rtd-theme = "^1.0.0"
 tox = "^3.23"
-black = "^21.6b0"
-flake8 = "^3.9.2"
+black = "^22.3.0"
+flake8 = "^4.0.1"
 pydocstyle = "^6.1.1"
 
 [build-system]
