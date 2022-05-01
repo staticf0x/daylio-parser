@@ -1,22 +1,22 @@
 """Mood statistics."""
 
 import datetime
-from dataclasses import dataclass
 from typing import Dict, List, Tuple
 
 import numpy as np
+from pydantic import BaseModel
+from pydantic.types import PositiveInt, confloat
 
 from .parser import Entry, MoodConfig
 
 
-@dataclass
-class MoodPeriod:
+class MoodPeriod(BaseModel):
     """A class to represent a closed period of either good or bad mood."""
 
     start_date: datetime.datetime
     end_date: datetime.datetime
-    duration: int
-    avg_mood: float
+    duration: PositiveInt
+    avg_mood: confloat(ge=1.0, le=5.0)
 
 
 class Stats:
@@ -81,7 +81,7 @@ class Stats:
 
         # Compute the rolling mean for our data
         # Moods are stored in the 1st column, dates in 0th
-        filtered_data = np.convolve(data[:, 1], np.ones((N,)) / N, mode='valid')
+        filtered_data = np.convolve(data[:, 1], np.ones((N,)) / N, mode="valid")
         filtered_data = filtered_data.astype(np.float64).round(2)
 
         # Fill the missing entries with NaN,
@@ -180,7 +180,7 @@ class Stats:
 
     def stability(self, mood_levels: List[float]) -> int:
         """Return percent stability for given list of mood levels."""
-        raise NotImplementedError('Mood stability is not yet implemented.')
+        raise NotImplementedError("Mood stability is not yet implemented.")
 
         if np.std(mood_levels) == 0:
             return 100
@@ -189,7 +189,7 @@ class Stats:
 
     def stability_by_month(self) -> List[Tuple[datetime.date, int]]:
         """Compute mood stability for each year-month in given entries."""
-        raise NotImplementedError('Mood stability is not yet implemented.')
+        raise NotImplementedError("Mood stability is not yet implemented.")
 
         group_by_date = {}
 
