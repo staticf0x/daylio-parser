@@ -1,17 +1,8 @@
 """Test parser.py"""
 
 import datetime
-import pathlib
-
-import pytest
 
 from daylio_parser.parser import Entry, Parser
-
-
-@pytest.fixture()
-def test_csv():
-    here = pathlib.Path(__file__).parent.resolve()
-    return here / "data" / "test_data.csv"
 
 
 def test_load_csv(test_csv):

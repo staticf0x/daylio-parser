@@ -1,18 +1,9 @@
 import datetime
-import pathlib
 
 import numpy as np
 import pytest
 
-from daylio_parser.parser import Parser
 from daylio_parser.stats import Stats
-
-
-@pytest.fixture()
-def entries():
-    here = pathlib.Path(__file__).parent.resolve()
-    parser = Parser()
-    return parser.load_csv(here / "data" / "test_data.csv")
 
 
 def test_average_moods(entries):

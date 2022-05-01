@@ -1,20 +1,10 @@
 """Test plot.py"""
 
 import datetime
-import pathlib
 
 import pytest
 
-from daylio_parser.parser import Parser
 from daylio_parser.plot import PlotData
-
-
-@pytest.fixture()
-def entries():
-    """Load the test CSV for all test methods."""
-    here = pathlib.Path(__file__).parent.resolve()
-    parser = Parser()
-    return parser.load_csv(here / "data" / "test_data.csv")
 
 
 @pytest.mark.skip(reason="TODO: test this method")
