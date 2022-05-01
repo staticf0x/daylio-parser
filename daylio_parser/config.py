@@ -6,19 +6,19 @@ from pydantic import BaseModel, ValidationError, validator
 from pydantic.types import conint
 
 DEFAULT_MOODS = [
-    (1, 'awful'),
-    (2, 'bad'),
-    (3, 'meh'),
-    (4, 'good'),
-    (5, 'rad'),
+    (1, "awful"),
+    (2, "bad"),
+    (3, "meh"),
+    (4, "good"),
+    (5, "rad"),
 ]
 
 DEFAULT_COLOR_PALETTE = [
-    '#6C7679',
-    '#5579A7',
-    '#9454A3',
-    '#4CA369',
-    '#FF8500',
+    "#6C7679",
+    "#5579A7",
+    "#9454A3",
+    "#4CA369",
+    "#FF8500",
 ]
 
 MoodList = NewType("MoodList", List[Tuple[int, str]])
@@ -120,19 +120,19 @@ class MoodConfig:
         """Validate the provided mood list."""
         for mood in mood_list:
             if not len(mood) == 2:
-                raise ValueError('Moods have to be (level, name)')
+                raise ValueError("Moods have to be (level, name)")
 
             level = mood[0]
 
             if level not in range(1, 6):
-                raise ValueError(f'Mood level {level} is not valid')
+                raise ValueError(f"Mood level {level} is not valid")
 
         all_levels = set([mood[0] for mood in mood_list])
 
         if all_levels != set(range(1, 6)):
-            raise ValueError('There has to be at least one mood for each level of {1..6}')
+            raise ValueError("There has to be at least one mood for each level of {1..6}")
 
     def __validate_color_palette(self, color_palette: List[str] = None):
         """Validate the provided color palette."""
         if not len(color_palette) == 5:
-            raise ValueError('Color palette must contain exactly 5 colors')
+            raise ValueError("Color palette must contain exactly 5 colors")
