@@ -19,7 +19,7 @@ Switching into the venv:
 
 Running test for the current python version:
 
-`$ green tests/`
+`$ pytest -v --cov=daylio_parser --cov-report term-missing tests`
 
 Running all checks with tox prior to running GitHub actions:
 
