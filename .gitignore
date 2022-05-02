@@ -3,3 +3,4 @@ docs/build
 dist/
 .tox/
 .coverage
+.venv
