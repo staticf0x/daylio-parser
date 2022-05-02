@@ -2,15 +2,21 @@
 
 import datetime
 
+import numpy as np
 import pytest
 
 from daylio_parser.plot import PlotData
 
 
-@pytest.mark.skip(reason="TODO: test this method")
 def test_split_into_bands(entries):
     plotdata = PlotData(entries)
-    _ = plotdata.split_into_bands()
+    filtered_data = plotdata.split_into_bands(np.array([1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]))
+
+    assert list(filtered_data["awful"][~filtered_data["awful"].mask].data) == [1.0]
+    assert list(filtered_data["bad"][~filtered_data["bad"].mask].data) == [1.5, 2.0]
+    assert list(filtered_data["meh"][~filtered_data["meh"].mask].data) == [2.5, 3.0]
+    assert list(filtered_data["good"][~filtered_data["good"].mask].data) == [3.5, 4.0]
+    assert list(filtered_data["rad"][~filtered_data["rad"].mask].data) == [4.5, 5.0]
 
 
 def test_interpolate(entries):
