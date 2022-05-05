@@ -1,5 +1,6 @@
 """Configuration objects for the parser and others."""
 
+import json
 from typing import List, NewType, Tuple
 
 from pydantic import BaseModel, ValidationError, validator
@@ -79,6 +80,23 @@ class MoodConfig:
             color_palette = DEFAULT_COLOR_PALETTE
 
         self.__load_moods(mood_list, color_palette)
+
+    @classmethod
+    def from_file(cls, path: str):
+        """Load MoodConfig from a JSON file.
+
+        The file structure is:
+        {
+            "moods": [(level, name), ...],
+            "colors": [value, ...],
+        }
+        """
+        with open(path, "r") as fread:
+            data = json.load(fread)
+            moods = data.get("moods")
+            colors = data.get("colors")
+
+            return cls(moods, colors)
 
     def get(self, mood_name: str) -> Mood:
         """Return a Mood by its name."""
