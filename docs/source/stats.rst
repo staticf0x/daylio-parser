@@ -6,10 +6,10 @@ Stats
     This class represents a period of moods.
 
     .. py:attribute:: start_date
-        :type: datetime.datetime
+        :type: datetime.date
 
     .. py:attribute:: end_date
-        :type: datetime.datetime
+        :type: datetime.date
 
     .. py:attribute:: duration
         :type: int

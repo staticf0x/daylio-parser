@@ -33,6 +33,6 @@ Parser
 
     .. py:method:: load_from_buffer(f) -> List[Entry]
 
-        Actually reads the entries from a CSV file.
+        Load entries from a file like object containing CSV data.
 
         :param f: A file-like object

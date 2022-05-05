@@ -18,6 +18,7 @@ Each mood has its class:
         :type: int
 
         Assigned numeral level for the mood (higher = better mood).
+        The allowed levels are 1 to 5.
 
     .. py:attribute:: color
         :type: str
@@ -58,8 +59,29 @@ The whole mood config for your app will be constructed using the
         :type mood_list: List[Tuple[str, str]]
         :type color_palette: List[str]
 
+    .. py:staticmethod:: from_file(path) -> MoodConfig
+
+        Loads the MoodConfig from a JSON file.
+        The file structure is:
+
+        .. code-block::
+
+            {
+                "moods": [(level, name), ...],
+                "colors": [value, ...],
+            }
+
+        :type path: str
+
     .. py:method:: get(mood_name) -> Mood
 
         Returns a :py:class:`Mood` by its name.
 
+        Raises :py:class:`MoodNotFound` if the ``mood_name`` doesn't exist.
+
         :param str mood_name: Mood name
+
+
+.. py:exception:: MoodNotFound
+
+    Raised in cases when attempting to retrieve a non-existing :py:class:`Mood`.
