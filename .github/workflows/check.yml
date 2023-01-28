@@ -30,7 +30,7 @@ jobs:
 
       - name: Run tests
         run: |
-          tox ${{ matrix.python-version }}
+          tox -e ${{ matrix.python-version }}
 
   checks:
     runs-on: ubuntu-latest
