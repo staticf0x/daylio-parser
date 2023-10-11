@@ -2,7 +2,7 @@
 name = "daylio-parser"
 version = "0.4.1"
 description = "A Python module to parse Daylio exports"
-authors = ["staticf0x <44530786+staticf0x@users.noreply.github.com>"]
+authors = ["staticf0x <staticf0x@pm.me>"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/staticf0x/daylio-parser"
