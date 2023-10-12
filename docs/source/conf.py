@@ -17,12 +17,12 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'daylio-parser'
-copyright = '2021 - 2022, staticf0x'
-author = 'staticf0x'
+project = "daylio-parser"
+copyright = "2021 - 2023, staticf0x"
+author = "staticf0x"
 
 # The full version, including alpha/beta/rc tags
-release = '0.1.0'
+release = "0.1.0"
 
 
 # -- General configuration ---------------------------------------------------
@@ -33,7 +33,7 @@ release = '0.1.0'
 extensions = []
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -48,15 +48,15 @@ exclude_patterns = []
 #
 import os
 
-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+on_rtd = os.environ.get("READTHEDOCS", None) == "True"
 
 if not on_rtd:
     import sphinx_rtd_theme
 
-    html_theme = 'sphinx_rtd_theme'
+    html_theme = "sphinx_rtd_theme"
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ["_static"]
