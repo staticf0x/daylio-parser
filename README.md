@@ -3,7 +3,7 @@
 
 # daylio-parser
 
-A Python module to parse Daylio CSV exports
+A Python module to parse [Daylio](https://daylio.net/) CSV exports.
 
 ## Development
 
