@@ -44,7 +44,7 @@ Running all checks with tox prior to running GitHub actions:
     - [ ] JSON
 
 [ci-link]: https://github.com/staticf0x/daylio-parser/actions/workflows/check.yml
-[ci-badge]: https://img.shields.io/github/workflow/status/staticf0x/daylio-parser/Check/master
+[ci-badge]: https://img.shields.io/github/actions/workflow/status/staticf0x/daylio-parser/check.yml?branch=master
 [docs-link]: https://daylio-parser.readthedocs.io/en/latest/
 [docs-badge]: https://img.shields.io/readthedocs/daylio-parser/latest
 [py-versions-badge]: https://img.shields.io/pypi/pyversions/daylio-parser
