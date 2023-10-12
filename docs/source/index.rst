@@ -6,6 +6,7 @@ Welcome to daylio-parser's documentation!
    :caption: Contents:
 
    installation
+   example
    config
    parser
    plot
