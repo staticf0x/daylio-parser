@@ -1,7 +1,7 @@
 """Configuration objects for the parser and others."""
 
 import json
-from typing import List, NewType, Tuple
+from typing import NewType
 
 from pydantic import BaseModel, ValidationError, validator
 from pydantic.types import conint
@@ -22,7 +22,7 @@ DEFAULT_COLOR_PALETTE = [
     "#FF8500",
 ]
 
-MoodList = NewType("MoodList", List[Tuple[int, str]])
+MoodList = NewType("MoodList", list[tuple[int, str]])
 
 
 class Mood(BaseModel):
@@ -31,35 +31,34 @@ class Mood(BaseModel):
     name: str
     level: conint(ge=1, le=5)
     color: str
-    boundaries: Tuple[float, float]
+    boundaries: tuple[float, float]
 
     @validator("boundaries")
-    def greater_than_previous(cls, v):
+    def greater_than_previous(cls, v) -> tuple[float, float]:
         """Validate that the boundaries are always (lower, higher)."""
         lower, higher = v
 
         if lower >= higher:
-            raise ValidationError(f"Boundary {lower} must be lower than {higher}")
+            msg = f"Boundary {lower} must be lower than {higher}"
+            raise ValidationError(msg)
 
         return (lower, higher)
 
 
-class MoodNotFound(Exception):
+class MoodNotFoundError(Exception):
     """Exception for moods not being configured yet used in the CSV."""
-
-    pass
 
 
 class MoodConfig:
     """Configure mood levels and their properties."""
 
-    def __init__(self, mood_list: MoodList = None, color_palette: List[str] = None):
+    def __init__(self, mood_list: MoodList = None, color_palette: list[str] | None = None) -> None:
         """Create the config with a list of moods: [(level, name), ...].
 
         If no moods are provided, then the config is created
         with a default set of 5 moods.
         """
-        self.moods: List[Mood] = []
+        self.moods: list[Mood] = []
         self.__map = {}
 
         if not mood_list:
@@ -70,9 +69,8 @@ class MoodConfig:
 
         self.__load_moods(mood_list, color_palette)
 
-    def from_list(self, mood_list: MoodList, color_palette: List[str] = None):
-        """
-        Update the config with a list of moods: [(level, name), ...].
+    def from_list(self, mood_list: MoodList, color_palette: list[str] | None = None) -> None:
+        """Update the config with a list of moods: [(level, name), ...].
 
         Optionally pass also a color_palette, if not provided, the default palette is used.
         """
@@ -91,7 +89,7 @@ class MoodConfig:
             "colors": [value, ...],
         }
         """
-        with open(path, "r") as fread:
+        with open(path) as fread:
             data = json.load(fread)
             moods = data.get("moods")
             colors = data.get("colors")
@@ -103,9 +101,9 @@ class MoodConfig:
         try:
             return self.__map[mood_name]
         except KeyError:
-            raise MoodNotFound(f"Mood '{mood_name}' is not configured")
+            raise MoodNotFoundError(f"Mood '{mood_name}' is not configured")
 
-    def __load_moods(self, mood_list: MoodList, color_palette: List[str] = None):
+    def __load_moods(self, mood_list: MoodList, color_palette: list[str] = None):
         self.__validate_mood_list(mood_list)
         self.__validate_color_palette(color_palette)
 
@@ -128,7 +126,10 @@ class MoodConfig:
             boundaries = (b_lower, b_upper)
 
             mood = Mood(
-                name=name, level=level, color=color_palette[level - 1], boundaries=boundaries
+                name=name,
+                level=level,
+                color=color_palette[level - 1],
+                boundaries=boundaries,
             )
 
             self.moods.append(mood)
@@ -145,12 +146,12 @@ class MoodConfig:
             if level not in range(1, 6):
                 raise ValueError(f"Mood level {level} is not valid")
 
-        all_levels = set([mood[0] for mood in mood_list])
+        all_levels = {mood[0] for mood in mood_list}
 
         if all_levels != set(range(1, 6)):
             raise ValueError("There has to be at least one mood for each level of {1..6}")
 
-    def __validate_color_palette(self, color_palette: List[str] = None):
+    def __validate_color_palette(self, color_palette: list[str] = None):
         """Validate the provided color palette."""
         if not len(color_palette) == 5:
             raise ValueError("Color palette must contain exactly 5 colors")

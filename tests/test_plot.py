@@ -27,7 +27,7 @@ def test_interpolate(entries):
     first_date = dates[0].date()
     first_day = []
 
-    for date, mood in zip(dates, moods):
+    for date, mood in zip(dates, moods, strict=False):
         if date.date() == first_date:
             first_day.append((date, mood))
 

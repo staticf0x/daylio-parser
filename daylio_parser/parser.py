@@ -2,7 +2,6 @@
 
 import csv
 import datetime
-from typing import List
 
 from pydantic import BaseModel
 
@@ -14,7 +13,7 @@ class Entry(BaseModel):
 
     datetime: datetime.datetime
     mood: Mood
-    activities: List[str]
+    activities: list[str]
     notes: str = ""
 
 
@@ -30,7 +29,7 @@ class Parser:
 
     def load_csv(self, path):
         """Load data from a CSV file."""
-        with open(path, "r") as fread:
+        with open(path) as fread:
             return self.load_from_buffer(fread)
 
     def load_from_buffer(self, f):

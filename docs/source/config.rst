@@ -77,11 +77,11 @@ The whole mood config for your app will be constructed using the
 
         Returns a :py:class:`Mood` by its name.
 
-        Raises :py:class:`MoodNotFound` if the ``mood_name`` doesn't exist.
+        Raises :py:class:`MoodNotFoundError` if the ``mood_name`` doesn't exist.
 
         :param str mood_name: Mood name
 
 
-.. py:exception:: MoodNotFound
+.. py:exception:: MoodNotFoundError
 
     Raised in cases when attempting to retrieve a non-existing :py:class:`Mood`.

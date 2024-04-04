@@ -1,7 +1,6 @@
 """Utilities to prepare data for plotting."""
 
 import datetime
-from typing import List
 
 import numpy as np
 
@@ -13,7 +12,7 @@ from .parser import Entry
 class PlotData:
     """Class to operate on Entries and prepare them for plotting with matplotlib."""
 
-    def __init__(self, entries: List[Entry], config: MoodConfig = None):
+    def __init__(self, entries: list[Entry], config: MoodConfig = None):
         """Create the object. If config is None, a default MoodConfig is created."""
         self.entries = entries
         self.config = config
@@ -85,7 +84,7 @@ class PlotData:
             time_diff = steps  # Time difference a.k.a. number of buckets
             coef = value_diff / time_diff  # How much the mood changes in one step
 
-            for step_n in range(0, steps):
+            for step_n in range(steps):
                 # Simple linear interpolation
                 next_value = step_n * coef + current_point[1]
 

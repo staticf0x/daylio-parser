@@ -1,7 +1,6 @@
 """Mood statistics."""
 
 import datetime
-from typing import Dict, List, Tuple
 
 import numpy as np
 from pydantic import BaseModel
@@ -22,7 +21,7 @@ class MoodPeriod(BaseModel):
 class Stats:
     """A class to compute stats, interpolate data and so on."""
 
-    def __init__(self, entries: List[Entry], config: MoodConfig = None):
+    def __init__(self, entries: list[Entry], config: MoodConfig = None):
         """Create the object. If config is None, a default MoodConfig is created."""
         self.entries = entries
         self.config = config
@@ -30,7 +29,7 @@ class Stats:
         if not self.config:
             self.config = MoodConfig()
 
-    def average_moods(self) -> List[Tuple[datetime.date, float]]:
+    def average_moods(self) -> list[tuple[datetime.date, float]]:
         """Compute average moods for each day.
 
         Returns a list of tuples: [(datetime.date, average mood that day), ...]
@@ -50,7 +49,7 @@ class Stats:
 
         return result
 
-    def activity_moods(self) -> Dict[str, Tuple[float, float]]:
+    def activity_moods(self) -> dict[str, tuple[float, float]]:
         """Compute average moods for each activity in entries.
 
         Returns a dict: {activity name: (average mood, standard deviation)}
@@ -94,7 +93,7 @@ class Stats:
 
         return data
 
-    def find_high_periods(self, threshold: float = 4, min_duration: int = 4) -> List[MoodPeriod]:
+    def find_high_periods(self, threshold: float = 4, min_duration: int = 4) -> list[MoodPeriod]:
         """Find periods of elevated mood (hypomania, mania).
 
         TODO: The threshold is highly individual
@@ -125,23 +124,22 @@ class Stats:
                 start_date = None
                 end_date = None
                 moods = []
-        else:
-            if start_date:
-                end_date = date
+        if start_date:
+            end_date = date
 
-                period = MoodPeriod(
-                    start=start_date,
-                    end=end_date,
-                    duration=(end_date - start_date).days,
-                    avg_mood=np.mean(moods),
-                )
+            period = MoodPeriod(
+                start=start_date,
+                end=end_date,
+                duration=(end_date - start_date).days,
+                avg_mood=np.mean(moods),
+            )
 
-                if period.duration >= min_duration:
-                    dates.append(period)
+            if period.duration >= min_duration:
+                dates.append(period)
 
         return dates
 
-    def find_low_periods(self, threshold: float = 3, min_duration: int = 5) -> List[MoodPeriod]:
+    def find_low_periods(self, threshold: float = 3, min_duration: int = 5) -> list[MoodPeriod]:
         """Find periods of low mood (depression).
 
         TODO: The threshold is highly individual
@@ -173,23 +171,22 @@ class Stats:
                 start_date = None
                 end_date = None
                 moods = []
-        else:
-            if start_date:
-                end_date = date
+        if start_date:
+            end_date = date
 
-                period = MoodPeriod(
-                    start=start_date,
-                    end=end_date,
-                    duration=(end_date - start_date).days,
-                    avg_mood=np.mean(moods),
-                )
+            period = MoodPeriod(
+                start=start_date,
+                end=end_date,
+                duration=(end_date - start_date).days,
+                avg_mood=np.mean(moods),
+            )
 
-                if period.duration >= min_duration:
-                    dates.append(period)
+            if period.duration >= min_duration:
+                dates.append(period)
 
         return dates
 
-    def stability(self, mood_levels: List[float]) -> int:
+    def stability(self, mood_levels: list[float]) -> int:
         """Return percent stability for given list of mood levels."""
         raise NotImplementedError("Mood stability is not yet implemented.")
 
@@ -198,7 +195,7 @@ class Stats:
 
         return 0
 
-    def stability_by_month(self) -> List[Tuple[datetime.date, int]]:
+    def stability_by_month(self) -> list[tuple[datetime.date, int]]:
         """Compute mood stability for each year-month in given entries."""
         raise NotImplementedError("Mood stability is not yet implemented.")
 

@@ -92,7 +92,7 @@ def __assert_mood_data_equal(data, expected_data):
     """Compare two arrays of (datetime, avg_mood)."""
     assert len(list(data)) == len(list(expected_data))
 
-    for first, second in zip(data, expected_data):
+    for first, second in zip(data, expected_data, strict=False):
         assert first[0] == second[0]
 
         if np.isnan(first[1]):
