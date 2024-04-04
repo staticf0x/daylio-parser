@@ -16,19 +16,34 @@ def test_default_mood_list():
     m = MoodConfig()
 
     assert m.moods[0] == Mood(
-        name="awful", level=1, boundaries=(1, 1.5), color=DEFAULT_COLOR_PALETTE[0],
+        name="awful",
+        level=1,
+        boundaries=(1, 1.5),
+        color=DEFAULT_COLOR_PALETTE[0],
     )
     assert m.moods[1] == Mood(
-        name="bad", level=2, boundaries=(1.5, 2.5), color=DEFAULT_COLOR_PALETTE[1],
+        name="bad",
+        level=2,
+        boundaries=(1.5, 2.5),
+        color=DEFAULT_COLOR_PALETTE[1],
     )
     assert m.moods[2] == Mood(
-        name="meh", level=3, boundaries=(2.5, 3.5), color=DEFAULT_COLOR_PALETTE[2],
+        name="meh",
+        level=3,
+        boundaries=(2.5, 3.5),
+        color=DEFAULT_COLOR_PALETTE[2],
     )
     assert m.moods[3] == Mood(
-        name="good", level=4, boundaries=(3.5, 4.5), color=DEFAULT_COLOR_PALETTE[3],
+        name="good",
+        level=4,
+        boundaries=(3.5, 4.5),
+        color=DEFAULT_COLOR_PALETTE[3],
     )
     assert m.moods[4] == Mood(
-        name="rad", level=5, boundaries=(4.5, 5.01), color=DEFAULT_COLOR_PALETTE[4],
+        name="rad",
+        level=5,
+        boundaries=(4.5, 5.01),
+        color=DEFAULT_COLOR_PALETTE[4],
     )
 
 
@@ -45,19 +60,34 @@ def test_custom_moods():
     m = MoodConfig(moods)
 
     assert m.moods[0] == Mood(
-        name="bad", level=1, boundaries=(1, 1.5), color=DEFAULT_COLOR_PALETTE[0],
+        name="bad",
+        level=1,
+        boundaries=(1, 1.5),
+        color=DEFAULT_COLOR_PALETTE[0],
     )
     assert m.moods[1] == Mood(
-        name="almost bad", level=2, boundaries=(1.5, 2.5), color=DEFAULT_COLOR_PALETTE[1],
+        name="almost bad",
+        level=2,
+        boundaries=(1.5, 2.5),
+        color=DEFAULT_COLOR_PALETTE[1],
     )
     assert m.moods[2] == Mood(
-        name="neutral", level=3, boundaries=(2.5, 3.5), color=DEFAULT_COLOR_PALETTE[2],
+        name="neutral",
+        level=3,
+        boundaries=(2.5, 3.5),
+        color=DEFAULT_COLOR_PALETTE[2],
     )
     assert m.moods[3] == Mood(
-        name="almost good", level=4, boundaries=(3.5, 4.5), color=DEFAULT_COLOR_PALETTE[3],
+        name="almost good",
+        level=4,
+        boundaries=(3.5, 4.5),
+        color=DEFAULT_COLOR_PALETTE[3],
     )
     assert m.moods[4] == Mood(
-        name="good", level=5, boundaries=(4.5, 5.01), color=DEFAULT_COLOR_PALETTE[4],
+        name="good",
+        level=5,
+        boundaries=(4.5, 5.01),
+        color=DEFAULT_COLOR_PALETTE[4],
     )
 
 
